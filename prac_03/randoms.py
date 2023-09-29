@@ -15,5 +15,5 @@
 # largest number i could have seen = 5.5
 import random
 
-for i in range(0, 101, 101):
-    print(random.randint(0, 101))
+random_number = random.randint(1, 100)
+print(random_number)
