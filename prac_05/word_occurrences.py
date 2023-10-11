@@ -1,7 +1,7 @@
 """
 Word Occurrences
 Estimate: 1hour
-Actual:
+Actual:45 minutes
 """
 word_counts = {}
 text = input("Enter a string: ")
