@@ -1,7 +1,7 @@
 """
 Emails
 Estimate: 1 hour
-Actual: 50 minutes
+Actual: 45 minutes
 """
 
 
