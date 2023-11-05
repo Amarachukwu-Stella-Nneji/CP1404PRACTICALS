@@ -7,14 +7,14 @@ import csv
 
 from prac_07.project import ProjectManagement
 
-MENU = ("- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date"
+MENU = ("- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by start_date"
         "\n- (A)dd new project\n- (U)pdate project\n- (Q)uit\n>>> ")
 
 
 def main():
     choice = input(MENU).upper()
     projects = []
-    file_name = "projects.txt"
+    file_name = "projects.txt "
     while choice != "Q":
         if choice == "L":
             projects = load_project(file_name)
@@ -45,7 +45,17 @@ def load_project(file_name):
 
 
 def display_projects(projects):
-    for project in projects:
+    incomplete_projects = [project for project in projects if project.completion < 100]
+    completed_projects = [project for project in projects if project.completion == 100]
+
+    print("Incomplete projects:")
+    incomplete_projects.sort(key=lambda project: project.priority)
+    for project in incomplete_projects:
+        print(project)
+
+    print("\nCompleted projects:")
+    completed_projects.sort(key=lambda project: project.priority)
+    for project in completed_projects:
         print(project)
 
 
