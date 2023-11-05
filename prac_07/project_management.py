@@ -12,6 +12,7 @@ MENU = ("- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter 
 
 
 def main():
+    """Load, save, display, filter, add and update project and quit."""
     choice = input(MENU).upper()
     projects = []
     file_name = "projects.txt "
@@ -36,6 +37,7 @@ def main():
 
 
 def load_project(file_name):
+    """Load project from specified file."""
     projects = []
     with open(file_name, "r", encoding="UTF-8") as in_file:
         reader = csv.reader(in_file, delimiter='\t')
@@ -46,6 +48,7 @@ def load_project(file_name):
 
 
 def display_projects(projects):
+    """Display project"""
     incomplete_projects = [project for project in projects if project.completion < 100]
     completed_projects = [project for project in projects if project.completion == 100]
 
@@ -61,6 +64,7 @@ def display_projects(projects):
 
 
 def save_projects(projects, filename):
+    """Save project to specified file."""
     with open(filename, 'w', newline='') as out_file:
         writer = csv.writer(out_file, delimiter=',')
         for project in projects:
@@ -68,6 +72,7 @@ def save_projects(projects, filename):
 
 
 def add_new_project(projects):
+    """Add new project"""
     print("Let's add a new project")
     name = input("Enter project name: ")
     start_date = input("Enter start date (dd/mm/yyyy): ")
@@ -80,6 +85,7 @@ def add_new_project(projects):
 
 
 def update_project(projects):
+    """Update project"""
     display_projects(projects)
     project_choice = int(input("Project choice: "))
     if 0 <= project_choice < len(projects):
@@ -96,6 +102,7 @@ def update_project(projects):
 
 
 def filter_projects_by_date(projects):
+    """Filter project"""
     print("Projects filtered by date:")
     date_string = input("Enter the date (dd/mm/yyyy) to filter by: ")
     try:
