@@ -19,7 +19,8 @@ def main():
         if choice == "L":
             projects = load_project(file_name)
         elif choice == "S":
-            pass
+            filename = input("Enter the filename to save projects to: ")
+            save_projects(projects, filename)
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
@@ -57,6 +58,13 @@ def display_projects(projects):
     completed_projects.sort(key=lambda project: project.priority)
     for project in completed_projects:
         print(project)
+
+
+def save_projects(projects, filename):
+    with open(filename, 'w', newline='') as out_file:
+        writer = csv.writer(out_file, delimiter=',')
+        for project in projects:
+            writer.writerow([project.name, project.start_date, project.priority, project.estimate, project.completion])
 
 
 main()
