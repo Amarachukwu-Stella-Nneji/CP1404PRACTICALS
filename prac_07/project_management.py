@@ -13,14 +13,15 @@ MENU = ("- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter 
 
 def main():
     choice = input(MENU).upper()
-    file_name = "projects.txt "
+    projects = []
+    file_name = "projects.txt"
     while choice != "Q":
         if choice == "L":
-            load_project(file_name)
+            projects = load_project(file_name)
         elif choice == "S":
             pass
         elif choice == "D":
-            pass
+            display_projects(projects)
         elif choice == "F":
             pass
         elif choice == "A":
@@ -41,6 +42,11 @@ def load_project(file_name):
         for row in reader:
             projects.append(ProjectManagement(row[0], row[1], int(row[2]), float(row[3]), int(row[4])))
     return projects
+
+
+def display_projects(projects):
+    for project in projects:
+        print(project)
 
 
 main()
