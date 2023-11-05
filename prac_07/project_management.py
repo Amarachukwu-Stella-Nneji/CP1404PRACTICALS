@@ -27,7 +27,7 @@ def main():
         elif choice == "A":
             add_new_project(projects)
         elif choice == "U":
-            pass
+            update_project(projects)
         else:
             print("Invalid choice")
         choice = input(MENU).upper()
@@ -76,6 +76,22 @@ def add_new_project(projects):
 
     new_project = ProjectManagement(name, start_date, priority, estimate, completion)
     projects.append(new_project)
+
+
+def update_project(projects):
+    display_projects(projects)
+    project_choice = int(input("Project choice: "))
+    if 0 <= project_choice < len(projects):
+        project = projects[project_choice]
+        print(
+            f"{project.name}, start: {project.start_date}, priority {project.priority}, estimate: ${project.estimate:.2f}, completion: {project.completion}%")
+        new_completion = input("New Percentage: ")
+        new_priority = input("New Priority: ")
+
+        if new_completion:
+            project.completion = int(new_completion)
+        if new_priority:
+            project.priority = int(new_priority)
 
 
 main()
