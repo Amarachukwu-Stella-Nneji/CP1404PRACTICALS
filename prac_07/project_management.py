@@ -4,7 +4,6 @@ Estimate - 5 hours
 Actual - hours
 """
 import csv
-
 from prac_07.project import ProjectManagement
 
 MENU = ("- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by start_date"
@@ -26,7 +25,7 @@ def main():
         elif choice == "F":
             pass
         elif choice == "A":
-            pass
+            add_new_project(projects)
         elif choice == "U":
             pass
         else:
@@ -65,6 +64,18 @@ def save_projects(projects, filename):
         writer = csv.writer(out_file, delimiter=',')
         for project in projects:
             writer.writerow([project.name, project.start_date, project.priority, project.estimate, project.completion])
+
+
+def add_new_project(projects):
+    print("Let's add a new project")
+    name = input("Enter project name: ")
+    start_date = input("Enter start date (dd/mm/yyyy): ")
+    priority = int(input("Enter project priority: "))
+    estimate = float(input("Enter cost estimate: "))
+    completion = int(input("Enter completion percentage: "))
+
+    new_project = ProjectManagement(name, start_date, priority, estimate, completion)
+    projects.append(new_project)
 
 
 main()
