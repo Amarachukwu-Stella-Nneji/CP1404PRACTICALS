@@ -1,10 +1,11 @@
 """
 project_management.py
 Estimate - 5 hours
-Actual - hours
+Actual - 9 hours
 """
 import csv
-from prac_07.project import ProjectManagement
+import datetime
+from prac_07.project import Project
 
 MENU = ("- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by start_date"
         "\n- (A)dd new project\n- (U)pdate project\n- (Q)uit\n>>> ")
@@ -40,7 +41,7 @@ def load_project(file_name):
         reader = csv.reader(in_file, delimiter='\t')
         in_file.readline()
         for row in reader:
-            projects.append(ProjectManagement(row[0], row[1], int(row[2]), float(row[3]), int(row[4])))
+            projects.append(Project(row[0], row[1], int(row[2]), float(row[3]), int(row[4])))
     return projects
 
 
@@ -74,7 +75,7 @@ def add_new_project(projects):
     estimate = float(input("Enter cost estimate: "))
     completion = int(input("Enter completion percentage: "))
 
-    new_project = ProjectManagement(name, start_date, priority, estimate, completion)
+    new_project = Project(name, start_date, priority, estimate, completion)
     projects.append(new_project)
 
 
@@ -92,6 +93,18 @@ def update_project(projects):
             project.completion = int(new_completion)
         if new_priority:
             project.priority = int(new_priority)
+
+
+def filter_projects_by_date(projects):
+    print("Projects filtered by date:")
+    date_string = input("Enter the date (dd/mm/yyyy) to filter by: ")
+    try:
+        user_date = datetime.datetime.strptime(date_string, '%d/%m/%Y').date()
+        filtered_projects = [project for project in projects if datetime.datetime.strptime(project.start_date, '%d/%m'
+                                                                                                               '/%Y').date() >= user_date]
+        display_projects(filtered_projects)
+    except ValueError:
+        print("Invalid date format. Please use dd/mm/yyyy.")
 
 
 main()
