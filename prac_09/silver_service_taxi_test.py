@@ -2,6 +2,7 @@ from silver_service_taxi import SilverServiceTaxi
 
 
 def main():
+    """Test the SilverServiceTaxi class."""
     silver_taxi = SilverServiceTaxi("Silver Taxi", 100, 2)
     silver_taxi.drive(18)
     print(silver_taxi.get_fare())
