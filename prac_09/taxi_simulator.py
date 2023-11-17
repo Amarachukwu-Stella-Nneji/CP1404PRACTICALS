@@ -5,6 +5,7 @@ MENU = "q)uit, c)hoose taxi, d)rive"
 
 
 def main():
+    """Tax simulator program."""
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     current_taxi = None
     bill_to_date = 0
@@ -28,6 +29,7 @@ def main():
 
 
 def choose_taxi(taxis):
+    """Return the taxi the user chose."""
     print("Taxis available: ")
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
@@ -42,6 +44,7 @@ def choose_taxi(taxis):
 
 
 def drive_taxi(taxi):
+    """Return the distance driven by the taxi"""
     if taxi:
         try:
             distance = int(input("Drive how far? "))
