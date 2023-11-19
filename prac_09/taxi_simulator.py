@@ -5,7 +5,7 @@ MENU = "q)uit, c)hoose taxi, d)rive"
 
 
 def main():
-    """Tax simulator program."""
+    """Taxi simulator program."""
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     current_taxi = None
     bill_to_date = 0
