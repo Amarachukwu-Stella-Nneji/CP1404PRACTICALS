@@ -57,7 +57,7 @@ run_tests()
 # (PyCharm may see your >>> doctest comments and run doctests anyway.)
 doctest.testmod()
 
-# TODO: 4. Fix the failing is_long_word function
+# TODO: 4. Fix the failing is_long_word function.
 # (don't change the tests, change the function!)
 
 # TODO: 5. Write and test a function to format a phrase as a sentence,
